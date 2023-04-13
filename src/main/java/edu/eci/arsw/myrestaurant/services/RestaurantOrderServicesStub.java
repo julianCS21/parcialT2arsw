@@ -27,6 +27,25 @@ public class RestaurantOrderServicesStub implements RestaurantOrderServices {
     }
 
     @Override
+    public StringBuilder getOrders(){
+        ConcurrentHashMap<Integer,Order> orders = new ConcurrentHashMap<>();
+        StringBuilder JSON = new StringBuilder("{ ");
+        for(Integer order:tableOrders.keySet()){
+            orders.put(order,tableOrders.get(order));
+        }
+        for(Integer order:orders.keySet()){
+            JSON.append(order).append(":").append(orders.get(order).toString());
+
+        }
+
+        for(Integer order:orders.keySet()){
+            JSON.append("total order #" + order).append(":").append(calc.calculateBill(orders.get(order),productsMap));
+        }
+        return JSON;
+
+    }
+
+    @Override
     public Order getTableOrder(int tableNumber) {
         if (!tableOrders.containsKey(tableNumber)) {
             return null;

@@ -46,7 +46,7 @@ public class OrdersAPIController {
 
     @GetMapping("/")
     public ResponseEntity<?> getOrders() throws OrderServicesException {
-            return null;
+           return new ResponseEntity<>(ros.getOrders(),HttpStatus.OK);
 
     }
 

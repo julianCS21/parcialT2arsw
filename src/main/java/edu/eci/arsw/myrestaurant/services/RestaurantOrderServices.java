@@ -28,5 +28,7 @@ public interface RestaurantOrderServices {
     Set<Integer> getTablesWithOrders();
 
     void releaseTable(int tableNumber) throws OrderServicesException;
+
+    public StringBuilder getOrders();
     
 }
