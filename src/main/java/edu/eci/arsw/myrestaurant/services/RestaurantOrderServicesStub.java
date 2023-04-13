@@ -29,17 +29,17 @@ public class RestaurantOrderServicesStub implements RestaurantOrderServices {
     @Override
     public StringBuilder getOrders(){
         ConcurrentHashMap<Integer,Order> orders = new ConcurrentHashMap<>();
-        StringBuilder JSON = new StringBuilder("{ ");
+        StringBuilder JSON = new StringBuilder("{ ").append("\n");
         for(Integer order:tableOrders.keySet()){
             orders.put(order,tableOrders.get(order));
         }
         for(Integer order:orders.keySet()){
-            JSON.append(order).append(":").append(orders.get(order).toString());
+            JSON.append("order #"+ order).append(":").append(orders.get(order).toString()).append("\n");
 
         }
 
         for(Integer order:orders.keySet()){
-            JSON.append("total order #" + order).append(":").append(calc.calculateBill(orders.get(order),productsMap));
+            JSON.append("total order # " + order).append(":").append(calc.calculateBill(orders.get(order),productsMap)).append("\n");
         }
         return JSON;
 

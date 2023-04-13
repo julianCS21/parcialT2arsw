@@ -44,10 +44,11 @@ public class OrdersAPIController {
     RestaurantOrderServices ros;
 
 
-    @GetMapping("/")
+
+
+    @GetMapping("")
     public ResponseEntity<?> getOrders() throws OrderServicesException {
            return new ResponseEntity<>(ros.getOrders(),HttpStatus.OK);
-
     }
 
 
